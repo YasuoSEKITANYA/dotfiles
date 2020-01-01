@@ -1,0 +1,22 @@
+[[plugins]]
+repo='lervag/vimtex'
+on_ft=['tex']
+hook_source='''
+let g:vimtex_latexmk_continuous=1
+let g:vimtex_latexmk_background=1
+let g:vimtex_latexmk_options='-pdfdvi'
+if (has('win32') || has('win64') || has('win32unix'))
+    let g:vimtex_view_general_viewer='SumatraPDF'
+    let g:vimtex_view_general_options='-reuse-instance -forward-search @tex @line @pdf'
+elseif (has('mac'))
+    let g:vimtex_view_general_viewer='/Applications/Skim.app/Contents/SharedSupport/displayline'
+    let g:vimtex_view_general_options='-r @line @pdf @tex'
+endif
+if (!has('clientserver'))
+    let g:vimtex_latexmk_callback=0
+endif
+'''
+
+[[[plugins]]]
+repo='vim-scripts/a.vim'
+on_ft=['cpp','c']
